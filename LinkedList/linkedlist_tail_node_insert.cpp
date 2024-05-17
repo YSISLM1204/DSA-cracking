@@ -8,22 +8,24 @@ struct Node{
 };
 
 // printing linked_list
-void insert_node_at_tail(Node * &head, Node * &tail) {
+void insert_node_at_tail(Node * &head) {
       Node * temp = head;
       while(temp->next != NULL) {
         temp =  temp->next;
       }
       int t; cin >> t;
-      tail->d = t;
-      tail->next=NULL;
-      temp->next = tail;
+      Node * lastNode = new Node();
+      lastNode->d = t;
+      lastNode->next = NULL;
+      temp->next = lastNode;
 }
 
 
 void display_linked_list(Node * &head) {
     Node * temp = head;
     while(temp != NULL) {
-         cout << temp->d << " ->";
+         temp->next == NULL ? cout << temp->d << '\n':
+         cout << temp->d << " -> ";
          temp = temp->next;
     }
     cout << endl;
@@ -39,14 +41,15 @@ int main() {
     Node * three = new Node();
 
     one->d = 1, one->next=two;
-    one->d = 2, one->next=three;
-    one->d = 3, one->next=NULL;
+    two->d = 2, two->next=three;
+    three->d = 3, three->next=NULL;
     // head pointing at one Node
     head = one;
 
     struct Node * tail;
 
-    insert_node_at_tail(head,tail);
+    insert_node_at_tail(head);
     display_linked_list(head);
+    
 
 }

@@ -11,10 +11,9 @@ struct Node{
 void print_linked_list(Node * &head) {
       Node * temp = head;
       while(temp != NULL) {
-        cout << temp->d << " ->";
+        temp->next == NULL ? cout << temp->d << endl : cout << temp->d << " -> ";
         temp =  temp->next;
       }
-      cout << endl;
 }
 
 int main() {
@@ -26,12 +25,12 @@ int main() {
     Node * three = new Node();
     
     one->d = 1, one->next=two;
-    one->d = 2, one->next=three;
-    one->d = 3, one->next=NULL;
+    two->d = 2, two->next=three;
+    three->d = 3, three->next=NULL;
     // head pointing at one Node
     head = one;
 
-    print_linked_list();
+    print_linked_list(head);
 
 
 }
