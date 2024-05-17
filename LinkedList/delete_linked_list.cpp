@@ -7,12 +7,14 @@ struct Node {
 };
 
 
-void insert_at_head(Node * &head) {
-    Node * newone = new Node();
-    int value; cin >> value;
-    newone->d = value;
-    newone->next = head;
-    head = newone;
+void delete_value_from_linked_list(Node * &head, int target) {
+    Node * temp = head;
+    while(temp->next->d != target) {
+        temp = temp->next;
+    }
+    Node * deleteNode = temp->next;
+    temp->next = temp->next->next;
+    delete deleteNode;
 }
 
 void display_linked_list(Node * &head) {
@@ -30,13 +32,16 @@ int main() {
     Node * one = new Node();
     Node * two = new Node();
     Node * three = new Node();
+    Node * four = new Node();
     one->d = 1;
     one->next = two;
     two->d = 2;
     two->next=three;
     three->d = 3;
-    three->next = NULL;
+    three->next = four;
+    four->d = 4;
+    four->next = NULL;
     head = one;
-    insert_at_head(head);
+    delete_value_from_linked_list(head,2);
     display_linked_list(head);
 }
